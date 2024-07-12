@@ -38,4 +38,10 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(ResourceExitsException.class)
+    public ResponseEntity<ErrorResponse> handleResourceExitsException(ResourceExitsException e) {
+        ErrorResponse error = new ErrorResponse(e.getMessage());
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
+
 }

@@ -2,6 +2,7 @@ package org.example.vegetableshopping.security.service;
 
 import lombok.RequiredArgsConstructor;
 import org.example.vegetableshopping.entity.User;
+import org.example.vegetableshopping.enums.RoleType;
 import org.example.vegetableshopping.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -29,7 +30,7 @@ public class UserDetailService implements UserDetailsService {
         // role
         Set<GrantedAuthority> authorities = user.getRoles()
                 .stream()
-                .map(role -> new SimpleGrantedAuthority(role.getName()))
+                .map(role -> new SimpleGrantedAuthority(role.getName().name()))
                 .collect(Collectors.toSet());
 
         return org.springframework.security.core.userdetails.User.builder()

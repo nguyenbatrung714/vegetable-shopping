@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.example.vegetableshopping.enums.RoleType;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -20,7 +21,8 @@ public class Role extends Auditable implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    @Enumerated(EnumType.STRING)
+    private RoleType name;
 
     @ManyToMany(mappedBy = "roles")
     @JsonBackReference

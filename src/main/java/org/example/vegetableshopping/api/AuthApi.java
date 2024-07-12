@@ -3,6 +3,8 @@ package org.example.vegetableshopping.api;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.vegetableshopping.dto.request.LoginRequest;
+import org.example.vegetableshopping.dto.request.UserRequest;
+import org.example.vegetableshopping.dto.response.UserResponse;
 import org.example.vegetableshopping.service.AuthService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +25,14 @@ public class AuthApi {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(authService.login(loginRequest));
     }
+
+    @PostMapping
+    public ResponseEntity<UserResponse> register(@RequestBody UserRequest userRequest) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(authService.register(userRequest));
+    }
+
+
 
 }
 
