@@ -7,4 +7,6 @@ public interface UserService {
 
     Page<UserResponse> getUsers(int page, int size, String sort);
 
+    UserResponse getUser(Integer id);
+
 }

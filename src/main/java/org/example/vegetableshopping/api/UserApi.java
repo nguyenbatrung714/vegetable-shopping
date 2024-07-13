@@ -6,10 +6,7 @@ import org.example.vegetableshopping.service.UserService;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -24,6 +21,12 @@ public class UserApi {
                                                        @RequestParam(value = "sort", required = false) String sort) {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(userService.getUsers(page, size, sort));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<UserResponse> getUser(@PathVariable("id") Integer id) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(userService.getUser(id));
     }
 
 }

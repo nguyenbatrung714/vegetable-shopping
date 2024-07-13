@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.vegetableshopping.converter.UserConverter;
 import org.example.vegetableshopping.dto.response.UserResponse;
 import org.example.vegetableshopping.entity.User;
+import org.example.vegetableshopping.exception.ResourceNotFoundException;
 import org.example.vegetableshopping.repository.UserRepository;
 import org.example.vegetableshopping.service.UserService;
 import org.springframework.data.domain.Page;
@@ -31,5 +32,13 @@ public class UserServiceImpl implements UserService {
         Page<User> users = userRepository.findAll(pageable);
 
         return users.map(UserConverter::toUserResponse);
+    }
+
+    @Override
+    public UserResponse getUser(Integer id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User", "id", "" + id));
+
+        return UserConverter.toUserResponse(user);
     }
 }
