@@ -17,4 +17,8 @@ public interface ProductService {
 
     ProductResponse getProduct(Integer id);
 
+    Page<ProductResponse> findByName(String name, int page, int size);
+
+    Page<ProductResponse> findByPrice(double minPrice, double maxPrice, int page, int size);
+
 }

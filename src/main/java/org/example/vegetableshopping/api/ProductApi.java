@@ -56,4 +56,21 @@ public class ProductApi {
                 .body(productService.getProduct(id));
     }
 
+    @GetMapping("/search/by-price")
+    public ResponseEntity<Page<ProductResponse>> findByPrice(@RequestParam(required = false) Double minPrice,
+                                                             @RequestParam(required = false) Double maxPrice,
+                                                             @RequestParam(defaultValue = "0") int page,
+                                                             @RequestParam(defaultValue = "15") int size) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(productService.findByPrice(minPrice, maxPrice, page, size));
+    }
+
+    @GetMapping("/search/by-name")
+    public ResponseEntity<Page<ProductResponse>> findByName(@RequestParam(required = false) String productName,
+                                                            @RequestParam(defaultValue = "0") int page,
+                                                            @RequestParam(defaultValue = "15") int size) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(productService.findByName(productName, page, size));
+    }
+
 }

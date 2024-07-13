@@ -125,4 +125,20 @@ public class ProductServiceImpl implements ProductService {
                 .orElseThrow(() -> new ResourceNotFoundException("Product", "id", "" + id));
         return ProductConverter.toProductResponse(product);
     }
+
+    @Override
+    public Page<ProductResponse> findByName(String name, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Product> products = productRepository.findAllByProductNameContaining(name, pageable);
+
+        return products.map(ProductConverter::toProductResponse);
+    }
+
+    @Override
+    public Page<ProductResponse> findByPrice(double minPrice, double maxPrice, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Product> products = productRepository.findAllByPriceBetween(minPrice, maxPrice, pageable);
+
+        return products.map(ProductConverter::toProductResponse);
+    }
 }
