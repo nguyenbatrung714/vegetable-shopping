@@ -8,7 +8,9 @@ import lombok.Setter;
 @Setter
 @Builder
 public class OrderDetailResponse {
+    private Integer orderDetailId;
     private Integer productId;
     private Integer quantity;
     private Double price;
+    private Integer orderId;
 }
