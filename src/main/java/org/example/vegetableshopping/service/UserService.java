@@ -9,4 +9,6 @@ public interface UserService {
 
     UserResponse getUser(Integer id);
 
+    Page<UserResponse> searchByUsername(String name, int page, int size);
+
 }

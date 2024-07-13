@@ -41,4 +41,12 @@ public class UserServiceImpl implements UserService {
 
         return UserConverter.toUserResponse(user);
     }
+
+    @Override
+    public Page<UserResponse> searchByUsername(String username, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<User> users = userRepository.findAllByUsernameContaining(username, pageable);
+
+        return users.map(UserConverter::toUserResponse);
+    }
 }

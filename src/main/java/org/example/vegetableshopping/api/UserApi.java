@@ -29,4 +29,12 @@ public class UserApi {
                 .body(userService.getUser(id));
     }
 
+    @GetMapping("/search/by-username")
+    public ResponseEntity<Page<UserResponse>> searchByUsername(@RequestParam String username,
+                                                               @RequestParam(defaultValue = "0") int page,
+                                                               @RequestParam(defaultValue = "15") int size) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(userService.searchByUsername(username, page, size));
+    }
+
 }
