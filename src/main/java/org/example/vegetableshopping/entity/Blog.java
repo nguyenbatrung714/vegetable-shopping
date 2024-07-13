@@ -24,14 +24,14 @@ public class Blog extends Auditable implements Serializable {
     @Column(length = 10000)
     private String content;
 
-    @JsonBackReference
-    @ManyToOne()
-    @JoinColumn(name = "category_id")
-    private Category category;
-
-    private String create_by;
+    private String createBy;
 
     private String image;
 
     private boolean active;
+
+    @JsonBackReference
+    @ManyToOne()
+    @JoinColumn(name = "category_id")
+    private Category category;
 }

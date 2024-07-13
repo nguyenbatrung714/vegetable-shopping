@@ -21,6 +21,12 @@ public class OrderDetail extends Auditable implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer orderDetailId;
 
+    @Column(name = "quantity")
+    private Integer quantity;
+
+    @Column(name = "price")
+    private Double price;
+
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "order_id")
@@ -31,9 +37,4 @@ public class OrderDetail extends Auditable implements Serializable {
     @JoinColumn(name = "product_id")
     private Product product;
 
-    @Column(name = "quantity")
-    private Integer quantity;
-
-    @Column(name = "price")
-    private Double price;
 }
