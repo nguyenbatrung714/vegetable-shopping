@@ -2,10 +2,8 @@ package org.example.vegetableshopping.converter;
 
 import org.example.vegetableshopping.dto.request.UserRequest;
 import org.example.vegetableshopping.dto.response.UserResponse;
-import org.example.vegetableshopping.entity.Role;
 import org.example.vegetableshopping.entity.User;
 
-import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 

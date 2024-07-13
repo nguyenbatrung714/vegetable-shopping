@@ -1,5 +1,6 @@
 package org.example.vegetableshopping.service;
 
+import org.example.vegetableshopping.dto.request.ChangePassword;
 import org.example.vegetableshopping.dto.request.LoginRequest;
 import org.example.vegetableshopping.dto.request.UserRequest;
 import org.example.vegetableshopping.dto.response.UserResponse;
@@ -11,5 +12,7 @@ public interface AuthService {
     UserResponse register(UserRequest userRequest);
 
     UserResponse updateAccount(Integer id, UserRequest userRequest);
+
+    UserResponse changePassword(Integer id, ChangePassword changePassword);
 
 }

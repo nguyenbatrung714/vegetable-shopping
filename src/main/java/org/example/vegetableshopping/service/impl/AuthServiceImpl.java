@@ -2,12 +2,14 @@ package org.example.vegetableshopping.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.example.vegetableshopping.converter.UserConverter;
+import org.example.vegetableshopping.dto.request.ChangePassword;
 import org.example.vegetableshopping.dto.request.LoginRequest;
 import org.example.vegetableshopping.dto.request.UserRequest;
 import org.example.vegetableshopping.dto.response.UserResponse;
 import org.example.vegetableshopping.entity.Role;
 import org.example.vegetableshopping.entity.User;
 import org.example.vegetableshopping.enums.RoleType;
+import org.example.vegetableshopping.exception.AuthenticationException;
 import org.example.vegetableshopping.exception.ResourceExitsException;
 import org.example.vegetableshopping.exception.ResourceNotFoundException;
 import org.example.vegetableshopping.repository.RoleRepository;
@@ -79,7 +81,6 @@ public class AuthServiceImpl implements AuthService {
                 } catch (IllegalArgumentException e) {
                     throw new RuntimeException("Invalid role name " + roleName);
                 }
-
             }
         }
 
@@ -92,10 +93,44 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public UserResponse updateAccount(Integer id, UserRequest userRequest) {
-        if (userRepository.findById(id).isEmpty()) {
-            throw new ResourceNotFoundException("User", "id", "" + id);
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User", "id", "" + id));
+
+        if (userRequest.getRoles() != null && !userRequest.getRoles().isEmpty()) {
+            Set<Role> roles = new HashSet<>();
+            for (String roleName : userRequest.getRoles()) {
+                try {
+                    RoleType eRole = RoleType.valueOf(roleName.toUpperCase());
+                    Role role = roleRepository.findByName(eRole)
+                            .orElseThrow(() -> new RuntimeException("Role " + roleName + " is not found."));
+                    roles.add(role);
+                } catch (IllegalArgumentException e) {
+                    throw new RuntimeException("Invalid role name " + roleName);
+                }
+            }
+            user.setRoles(roles);
         }
-        return null;
+
+        UserConverter.toUser(user, userRequest);
+        userRepository.save(user);
+
+        return UserConverter.toUserResponse(user);
     }
+
+    @Override
+    public UserResponse changePassword(Integer id, ChangePassword changePassword) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User", "id", "" + id));
+
+        if (!encoder.matches(changePassword.getOldPassword(), user.getPassword())) {
+            throw new AuthenticationException("Old password is incorrect");
+        }
+
+        user.setPassword(encoder.encode(changePassword.getNewPassword()));
+        userRepository.save(user);
+
+        return UserConverter.toUserResponse(user);
+    }
+
 }
 
