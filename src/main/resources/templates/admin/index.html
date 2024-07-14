@@ -1,10 +1,140 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | Vegetable-Shopping</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <!-- css -->
+    <link rel="stylesheet" th:href="@{/admin/css/index.css}">
+
+    <!--axios-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js"
+            integrity="sha512-JSCFHhKDilTRRXe9ak/FJ28dcpOJxzQaCd3Xg8MyF6XFjODhy/YMCM8HW0TFDckNHWUewW+kfvhin43hKtJxAw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
 
+<!-- Sidebar -->
+<div class="sidebar d-flex flex-column">
+    <a href="#" class="navbar-brand">Admin | BaTrung</a>
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link active" href="#" onclick="showContent('dashboard')"><i class="fas fa-tachometer-alt"></i>
+                Dashboard</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" onclick="showContent('profile')"><i class="fas fa-user"></i> Profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" onclick="showContent('basic-table')"><i class="fas fa-table"></i> Basic
+                Table</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" onclick="showContent('icon')"><i class="fas fa-font"></i> Icon</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" onclick="showContent('google-map')"><i class="fas fa-map-marker-alt"></i>
+                Google Map</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" onclick="showContent('blank-page')"><i class="fas fa-file-alt"></i> Blank Page</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" onclick="showContent('error-404')"><i class="fas fa-exclamation-triangle"></i>
+                Error 404</a>
+        </li>
+    </ul>
+</div>
+
+<!-- Main content -->
+<div class="main-content">
+    <!--    <nav class="navbar navbar-expand-lg navbar-dark">-->
+    <!--        <div class="container-fluid">-->
+    <!--            <a class="navbar-brand" href="#">Dashboard</a>-->
+    <!--            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
+    <!--                <span class="navbar-toggler-icon"></span>-->
+    <!--            </button>-->
+    <!--            <div class="collapse navbar-collapse" id="navbarNav">-->
+    <!--                <ul class="navbar-nav ms-auto">-->
+    <!--                    <li class="nav-item">-->
+    <!--                        <a class="nav-link" href="#">Upgrade to Pro</a>-->
+    <!--                    </li>-->
+    <!--                    <li class="nav-item">-->
+    <!--                        <a class="nav-link" href="#">Steave</a>-->
+    <!--                    </li>-->
+    <!--                </ul>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </nav>-->
+    <div class="container mt-4">
+        <div id="dashboard" class="content">
+            <h1>Dashboard</h1>
+            <div class="card">
+                <div class="card-body">
+                    Dashboard Content
+                </div>
+            </div>
+        </div>
+        <div id="profile" class="content" style="display:none;">
+            <h1>Profile</h1>
+            <div class="card">
+                <div class="card-body">
+                    Profile Content
+                </div>
+            </div>
+        </div>
+        <div id="basic-table" class="content" style="display:none;">
+            <h1>Basic Table</h1>
+            <div class="card">
+                <div class="card-body">
+                    Basic Table Content
+                </div>
+            </div>
+        </div>
+        <div id="icon" class="content" style="display:none;">
+            <h1>Icon</h1>
+            <div class="card">
+                <div class="card-body">
+                    Icon Content
+                </div>
+            </div>
+        </div>
+        <div id="google-map" class="content" style="display:none;">
+            <h1>Google Map</h1>
+            <div class="card">
+                <div class="card-body">
+                    Google Map Content
+                </div>
+            </div>
+        </div>
+        <div id="blank-page" class="content" style="display:none;">
+            <h1>Blank Page</h1>
+            <div class="card">
+                <div class="card-body">
+                    Blank Page Content
+                </div>
+            </div>
+        </div>
+        <div id="error-404" class="content" style="display:none;">
+            <h1>Error 404</h1>
+            <div class="card">
+                <div class="card-body">
+                    Error 404 Content
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
+<!--sweet alert-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script th:src="@{/admin/js/event-slidebar.js}"></script>
 </body>
 </html>

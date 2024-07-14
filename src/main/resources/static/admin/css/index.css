@@ -1,0 +1,45 @@
+
+body {
+    display: flex;
+    height: 100vh;
+    background: #f1f3f6;
+}
+
+.sidebar {
+    width: 250px;
+    background: #fff;
+    border-right: 1px solid #e9ecef;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.sidebar .navbar-brand {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.sidebar .nav-link {
+    color: #333;
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.sidebar .nav-link.active {
+    background-color: #e9ecef;
+    font-weight: bold;
+}
+
+.sidebar .nav-link i {
+    margin-right: 10px;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.navbar .navbar-brand {
+    color: white;
+}
