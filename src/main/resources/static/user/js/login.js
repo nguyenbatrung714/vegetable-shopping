@@ -22,7 +22,7 @@ $(document).ready(function () {
                 console.log('Error:', error);
                 Swal.fire({
                     title: 'Login Failed',
-                    text: 'An error occurred while logging in',
+                    text: JSON.stringify(error.response.data),
                     icon: 'error',
                     button: 'OK'
                 });

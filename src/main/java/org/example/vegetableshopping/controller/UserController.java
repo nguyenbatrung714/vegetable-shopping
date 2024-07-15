@@ -28,4 +28,9 @@ public class UserController {
         return "user/shop-grid";
     }
 
+    @GetMapping("/register")
+    public String getRegister() {
+        return "user/register";
+    }
+
 }

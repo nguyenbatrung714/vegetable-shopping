@@ -25,7 +25,7 @@ public class AuthApi {
     }
 
     @PostMapping
-    public ResponseEntity<UserResponse> register(@RequestBody UserRequest userRequest) {
+    public ResponseEntity<UserResponse> register(@Valid @RequestBody UserRequest userRequest) {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(authService.register(userRequest));
     }
