@@ -13,4 +13,20 @@ function loadCategoriesToHeader(page, size, sort) {
         });
 }
 
-window.loadCategoriesToHeader(0, 10, 'asc');
+// total cart
+function totalCart() {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let totalCart = 0;
+    let totalQuantity = 0;
+    cart.forEach(item => {
+        totalCart += item.price * item.quantityCart;
+        totalQuantity += item.quantityCart;
+    });
+    $('.total-cart').text(totalCart.toFixed(2));
+    $('.total-quantity').text(totalQuantity);
+}
+
+$(window).on('load', function () {
+    totalCart();
+    loadCategoriesToHeader(0, 10, 'asc');
+})

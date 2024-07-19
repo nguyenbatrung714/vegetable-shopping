@@ -21,4 +21,6 @@ public interface ProductService {
 
     Page<ProductResponse> findByPrice(double minPrice, double maxPrice, int page, int size);
 
+    Page<ProductResponse> getProductByCategory(Integer categoryId, int page, int size);
+
 }

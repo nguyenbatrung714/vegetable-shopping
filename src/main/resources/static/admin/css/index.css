@@ -43,3 +43,12 @@ body {
 .navbar .navbar-brand {
     color: white;
 }
+
+/*
+Product
+*/
+
+#products-table img {
+    width: 70px;
+    height: 70px;
+}

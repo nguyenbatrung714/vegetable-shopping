@@ -73,4 +73,12 @@ public class ProductApi {
                 .body(productService.findByName(productName, page, size));
     }
 
+    @GetMapping("/category/{id}")
+    public ResponseEntity<Page<ProductResponse>> getProductByCategory(@PathVariable Integer id,
+                                                                      @RequestParam(defaultValue = "0") int page,
+                                                                      @RequestParam(defaultValue = "4") int size) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(productService.getProductByCategory(id, page, size));
+    }
+
 }

@@ -7,8 +7,6 @@ function loadSectionCategories() {
                     $('.categories__slider').owlCarousel('add',
                         `<div class="col-lg-3">
                         <div class="categories__item set-bg" 
-                        data-setbg="${category.imagePath}" 
-                        style="background-image: url(${category.imagePath})"
                         style="background-image: url(${category.imagePath});">
                             <h5><a href="#">${category.categoryName}</a></h5>
                         </div>
@@ -31,24 +29,25 @@ function loadFeatureProduct(page, size) {
                             <div class="featured__item">
                                 <div class="featured__item__pic set-bg" style="background-image: url(${product.imagePath})">
                                     <ul class="featured__item__pic__hover">
-                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                        <li><a><i class="fa fa-heart"></i></a></li>
+                                        <li><a><i class="fa fa-retweet"></i></a></li>
+                                        <li><a class="add-to-cart" data-product='${JSON.stringify(product)}'>
+                                        <i class="fa fa-shopping-cart"></i></a></li>
                                     </ul>
                                 </div>
                                 <div class="featured__item__text">
-                                    <h6><a href="#">${product.productName}</a></h6>
+                                    <h6><a href="/vegetable-shopping/products/product-detail/${product.productId}">${product.productName}</a></h6>
                                     <h5>$ ${product.price}</h5>
                                 </div>
                             </div>
                         </div>
-                    `)
+                    `);
                 }
-            )
+            );
         })
         .catch(function (error) {
             console.log(error);
-        })
+        });
 }
 
 window.loadSectionCategories();

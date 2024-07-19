@@ -36,7 +36,7 @@
                 Table</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#" onclick="showContent('icon')"><i class="fas fa-font"></i> Icon</a>
+            <a class="nav-link" href="#" onclick="showContent('products')"><i class="fa-brands fa-product-hunt"></i>Products</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#" onclick="showContent('google-map')"><i class="fas fa-map-marker-alt"></i>
@@ -106,12 +106,39 @@
             <h1>Basic Table</h1>
 
         </div>
-        <div id="icon" class="content" style="display:none;">
-            <h1>Icon</h1>
-            <div class="card">
-                <div class="card-body">
-                    Icon Content
-                </div>
+        <div id="products" class="content" style="display:none;">
+            <div>
+                <button class="btn btn-primary">
+                    Add Product
+                </button>
+            </div>
+            <div>
+                <table class="table bg-white">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Photo</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Weight</th>
+                        <th>Type</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody id="products-table">
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
         <div id="google-map" class="content" style="display:none;">
@@ -141,12 +168,17 @@
     </div>
 </div>
 
+<!--jquery-->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 <!--sweet alert-->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<!-- js -->
 <script th:src="@{/admin/js/event-slidebar.js}"></script>
+<script th:src="@{/admin/js/product.js}"></script>
 </body>
 </html>

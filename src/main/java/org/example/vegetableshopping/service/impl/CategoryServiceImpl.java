@@ -112,6 +112,8 @@ public class CategoryServiceImpl implements CategoryService {
     public CategoryResponse getCategory(Integer categoryId) {
         Category category = categoryRepo.findById(categoryId)
                 .orElseThrow(() -> new ResourceNotFoundException("Category", "id", "" + categoryId));
+        category.setImagePath(s3Service.generatePresignedUrl(category.getImagePath()));
+
         return CategoryConverter.toCategoryResponse(category);
     }
 

@@ -48,9 +48,8 @@ public class ProductServiceImpl implements ProductService {
 
         return products.map(
                 product -> {
-                    ProductResponse productResponse = ProductConverter.toProductResponse(product);
-                    productResponse.setImagePath(s3Service.generatePresignedUrl(productResponse.getImagePath()));
-                    return productResponse;
+                    product.setImagePath(s3Service.generatePresignedUrl(product.getImagePath()));
+                    return ProductConverter.toProductResponse(product);
                 }
         );
     }
@@ -123,6 +122,8 @@ public class ProductServiceImpl implements ProductService {
     public ProductResponse getProduct(Integer id) {
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Product", "id", "" + id));
+        product.setImagePath(s3Service.generatePresignedUrl(product.getImagePath()));
+
         return ProductConverter.toProductResponse(product);
     }
 
@@ -131,7 +132,12 @@ public class ProductServiceImpl implements ProductService {
         Pageable pageable = PageRequest.of(page, size);
         Page<Product> products = productRepository.findAllByProductNameContaining(name, pageable);
 
-        return products.map(ProductConverter::toProductResponse);
+        return products.map(
+                product -> {
+                    product.setImagePath(s3Service.generatePresignedUrl(product.getImagePath()));
+                    return ProductConverter.toProductResponse(product);
+                }
+        );
     }
 
     @Override
@@ -139,6 +145,24 @@ public class ProductServiceImpl implements ProductService {
         Pageable pageable = PageRequest.of(page, size);
         Page<Product> products = productRepository.findAllByPriceBetween(minPrice, maxPrice, pageable);
 
-        return products.map(ProductConverter::toProductResponse);
+        return products.map(
+                product -> {
+                    product.setImagePath(s3Service.generatePresignedUrl(product.getImagePath()));
+                    return ProductConverter.toProductResponse(product);
+                }
+        );
+    }
+
+    @Override
+    public Page<ProductResponse> getProductByCategory(Integer categoryId, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Product> products = productRepository.getProductsByCategory_CategoryId(categoryId, pageable);
+
+        return products.map(
+                product -> {
+                    product.setImagePath(s3Service.generatePresignedUrl(product.getImagePath()));
+                    return ProductConverter.toProductResponse(product);
+                }
+        );
     }
 }
