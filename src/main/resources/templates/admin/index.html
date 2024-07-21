@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin | Vegetable-Shopping</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
@@ -12,11 +12,20 @@
 
     <!-- css -->
     <link rel="stylesheet" th:href="@{/admin/css/index.css}">
+<!--    <link rel="stylesheet" th:href="@{/admin/css/cheditor-compoment.css}">-->
+
+    <!--jquery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+            integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!--axios-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js"
             integrity="sha512-JSCFHhKDilTRRXe9ak/FJ28dcpOJxzQaCd3Xg8MyF6XFjODhy/YMCM8HW0TFDckNHWUewW+kfvhin43hKtJxAw=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--ckeditor-->
+<!--    <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/42.0.1/ckeditor5.css">-->
+
 </head>
 <body>
 
@@ -43,7 +52,7 @@
                 Google Map</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#" onclick="showContent('blank-page')"><i class="fas fa-file-alt"></i> Blank Page</a>
+            <a class="nav-link" href="#" onclick="showContent('blog-editor')"><i class="fas fa-file-alt"></i>Blog</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#" onclick="showContent('error-404')"><i class="fas fa-exclamation-triangle"></i>
@@ -77,30 +86,31 @@
 
         </div>
         <div id="account" class="content" style="display:none;">
-                <div>
-                    <button>
-                        xin chao
-                    </button>
-                </div>
-                <div>
-                    <table class="table bg-white">
-                        <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>dy>
-                    </table>
-                </div>
+            <div>
+                <button>
+                    xin chao
+                </button>
+            </div>
+            <div>
+                <table class="table bg-white">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    dy>
+                </table>
+            </div>
         </div>
         <div id="basic-table" class="content" style="display:none;">
             <h1>Basic Table</h1>
@@ -149,12 +159,25 @@
                 </div>
             </div>
         </div>
-        <div id="blank-page" class="content" style="display:none;">
-            <h1>Blank Page</h1>
-            <div class="card">
-                <div class="card-body">
-                    Blank Page Content
-                </div>
+        <div id="blog-editor" class="content" style="display:none;">
+            <div class="bg-white">
+                <form class="form-product">
+
+<!--                    <div class="main-container">-->
+<!--                        <div class="editor-container editor-container_document-editor" id="editor-container">-->
+<!--                            <div class="editor-container__menu-bar" id="editor-menu-bar"></div>-->
+<!--                            <div class="editor-container__toolbar" id="editor-toolbar"></div>-->
+<!--                            <div class="editor-container__editor-wrapper">-->
+<!--                                <div class="editor-container__editor"><div id="editor"></div></div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+                    <textarea id="blog-content"></textarea>
+
+                    <button type="button" name="createBlog" id="createBlog" class="btn btn-primary">Save Blog</button>
+                    <button type="button" id="resetForm" class="btn btn-danger">Remote Form</button>
+                </form>
             </div>
         </div>
         <div id="error-404" class="content" style="display:none;">
@@ -180,5 +203,9 @@
 <!-- js -->
 <script th:src="@{/admin/js/event-slidebar.js}"></script>
 <script th:src="@{/admin/js/product.js}"></script>
+<script th:src="@{/admin/js/blog.js}"></script>
+
+<script th:src="@{//cdn.ckeditor.com/4.22.1/full/ckeditor.js}"></script>
+
 </body>
 </html>
