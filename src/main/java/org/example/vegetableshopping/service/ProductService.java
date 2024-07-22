@@ -23,4 +23,6 @@ public interface ProductService {
 
     Page<ProductResponse> getProductByCategory(Integer categoryId, int page, int size);
 
+    int updateQuantity(Integer id, int quantity);
+
 }

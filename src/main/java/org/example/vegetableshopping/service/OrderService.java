@@ -1,6 +1,8 @@
 package org.example.vegetableshopping.service;
 
 import org.example.vegetableshopping.dto.request.OrderRequest;
+import org.example.vegetableshopping.dto.request.PlaceOrderRequest;
+import org.example.vegetableshopping.dto.request.ProductRequest;
 import org.example.vegetableshopping.dto.response.OrderResponse;
 import org.springframework.data.domain.Page;
 
@@ -17,5 +19,7 @@ public interface OrderService {
     OrderResponse getOrder(Integer id);
 
     Page<OrderResponse> getOrdersByUserId(Integer id, int page, int size);
+
+    PlaceOrderRequest saveOrderTransaction(PlaceOrderRequest placeOrderRequest);
 
 }

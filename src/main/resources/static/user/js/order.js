@@ -1,5 +1,5 @@
 function loadOrderByUserId(page, size) {
-    let userId = 2;
+    let userId = 1;
     axios.get(`http://localhost:8080/api/v1/orders/${userId}/orders?page=${page}&size=${size}`)
         .then(function (response) {
             let orders = response.data.content;
@@ -30,7 +30,7 @@ $(document).on('click', '.view-order-details', async function () {
     let orderId = $(this).data('order-id');
 
     try {
-        let response = await axios.get(`http://localhost:8080/api/v1/orderDetails/order/${orderId}`);
+        let response = await axios.get(`http://localhost:8080/api/v1/order-details/${orderId}/order`);
         let orderDetails = response.data;
 
         let tableHtml = `

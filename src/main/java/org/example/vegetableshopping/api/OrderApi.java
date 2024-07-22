@@ -3,6 +3,7 @@ package org.example.vegetableshopping.api;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.vegetableshopping.dto.request.OrderRequest;
+import org.example.vegetableshopping.dto.request.PlaceOrderRequest;
 import org.example.vegetableshopping.dto.response.OrderResponse;
 import org.example.vegetableshopping.service.OrderService;
 import org.springframework.data.domain.Page;
@@ -56,4 +57,11 @@ public class OrderApi {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(orderService.getOrdersByUserId(id, page, size));
     }
+
+    @PostMapping("/place")
+    public ResponseEntity<PlaceOrderRequest> saveOrderTransaction(@RequestBody PlaceOrderRequest placeOrderRequest) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(orderService.saveOrderTransaction(placeOrderRequest));
+    }
+
 }

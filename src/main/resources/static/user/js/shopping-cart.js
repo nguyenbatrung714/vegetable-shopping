@@ -63,7 +63,6 @@ $(document).on('click', '.icon_close', function () {
     localStorage.setItem('cart', JSON.stringify(cart));
     displayCart();
     totalCart();
-    swal("delete successfully");
 })
 
 $(window).on('load', function () {

@@ -165,4 +165,11 @@ public class ProductServiceImpl implements ProductService {
                 }
         );
     }
+
+    public int updateQuantity(Integer id, int quantity) {
+        Product product = productRepository.findById(id).orElseThrow();
+        product.setQuantity(quantity);
+        return quantity;
+    }
+
 }

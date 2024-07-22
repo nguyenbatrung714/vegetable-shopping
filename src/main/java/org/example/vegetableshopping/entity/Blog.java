@@ -24,11 +24,9 @@ public class Blog extends Auditable implements Serializable {
     @Column(length = 10000)
     private String content;
 
-    private String createBy;
+    private String imagePath;
 
-    private String image;
-
-    private boolean active;
+    private Boolean active;
 
     @JsonBackReference
     @ManyToOne()

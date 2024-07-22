@@ -23,8 +23,8 @@ public class OrderDetailServiceImpl implements OrderDetailService {
     private final ProductRepository productRepository;
 
     @Override
-    public List<OrderDetailResponse> getOrderDetailByUserId(Integer userId) {
-        List<OrderDetail> orderDetails = orderDetailRepository.getOrderDetailsByOrder_OrderId(userId);
+    public List<OrderDetailResponse> getOrderDetailByUserId(Integer id) {
+        List<OrderDetail> orderDetails = orderDetailRepository.getOrderDetailsByOrder_OrderId(id);
 
         return orderDetails.stream()
                 .map(OrderDetailConverter::toOrderDetailResponse)

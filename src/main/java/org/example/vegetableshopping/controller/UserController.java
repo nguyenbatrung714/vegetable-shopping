@@ -14,7 +14,7 @@ public class UserController {
         return "user/index";
     }
 
-    @GetMapping("/user/orders")
+    @GetMapping("/orders")
     public String getOrders() {
         return "user/order";
     }
@@ -39,8 +39,19 @@ public class UserController {
         return "user/product-detail";
     }
 
-    @GetMapping("user/shopping-cart")
+    @GetMapping("/shopping-cart")
     public String getShoppingCart() {
         return "user/shopping-cart";
     }
+
+    @GetMapping("/blogs/blog-detail/{id}")
+    public String getBlogDetail() {
+        return "user/blog-detail";
+    }
+
+    @GetMapping("/shopping-cart/check-out")
+    public String getCheckout() {
+        return "user/checkout";
+    }
+
 }

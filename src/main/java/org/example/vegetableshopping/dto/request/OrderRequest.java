@@ -27,6 +27,6 @@ public class OrderRequest {
     @NotNull(message = "Total amount is required")
     private Double totalAmount;
 
-    @NotBlank(message = "User id is required")
+    @NotNull(message = "User id is required")
     private Integer userId;
 }
