@@ -60,8 +60,13 @@
                                 <li><a href="#">English</a></li>
                             </ul>
                         </div>
-                        <div class="header__top__right__auth">
-                            <a th:href="@{/vegetable-shopping/login}"><i class="fa fa-user"></i> Login</a>
+                        <!--account-->
+                        <div class="header__top__right__language">
+                            <div><i class="fa fa-user"></i></div>
+                            <span class="arrow_carrot-down"></span>
+                            <ul id="userMenuContent">
+                                <!-- account item -->
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -337,6 +342,7 @@
 <!-- js -->
 <script th:src="@{/user/js/common/header.js}"></script>
 <script th:src="@{/user/js/index.js}"></script>
+<script th:src="@{/user/js/common/log-in-out.js}"></script>
 <script th:src="@{/user/js/common/add-to-cart.js}"></script>
 
 
