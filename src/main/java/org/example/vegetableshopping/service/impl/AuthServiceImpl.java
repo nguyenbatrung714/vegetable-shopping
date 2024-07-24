@@ -132,5 +132,14 @@ public class AuthServiceImpl implements AuthService {
         return UserConverter.toUserResponse(user);
     }
 
-}
+    @Override
+    public UserResponse findByUserName(String username) {
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
+            throw new ResourceExitsException("User", "username", username);
+        }
 
+        return UserConverter.toUserResponse(user);
+    }
+
+}

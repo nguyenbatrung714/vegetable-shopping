@@ -15,4 +15,6 @@ public interface AuthService {
 
     UserResponse changePassword(Integer id, ChangePassword changePassword);
 
+    UserResponse findByUserName(String username);
+
 }

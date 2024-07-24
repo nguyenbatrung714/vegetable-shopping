@@ -44,5 +44,11 @@ public class AuthApi {
                 .body(authService.changePassword(id, changePassword));
     }
 
+    @GetMapping()
+    public ResponseEntity<UserResponse> getUser(@RequestParam String username) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(authService.findByUserName(username));
+    }
+
 }
 

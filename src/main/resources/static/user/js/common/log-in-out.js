@@ -18,7 +18,7 @@ function checkLogin1() {
 
 function logout() {
     sessionStorage.removeItem('token');
-    sessionStorage.removeItem('userName');
+    sessionStorage.removeItem('account');
     window.location.href = "/vegetable-shopping/home";
 }
 
