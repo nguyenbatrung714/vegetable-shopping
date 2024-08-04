@@ -20,7 +20,7 @@ public class OrderDetailApi {
     @GetMapping("/{id}/order")
     public ResponseEntity<List<OrderDetailResponse>> getOrderDetailsByOrderId(@PathVariable("id") Integer id) {
         return ResponseEntity.status(HttpStatus.OK)
-                .body(orderDetailService.getOrderDetailByUserId(id));
+                .body(orderDetailService.getOrderDetailByOrderId(id));
     }
 
     @PostMapping

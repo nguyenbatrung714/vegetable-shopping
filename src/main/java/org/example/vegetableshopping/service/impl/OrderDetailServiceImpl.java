@@ -23,7 +23,7 @@ public class OrderDetailServiceImpl implements OrderDetailService {
     private final ProductRepository productRepository;
 
     @Override
-    public List<OrderDetailResponse> getOrderDetailByUserId(Integer id) {
+    public List<OrderDetailResponse> getOrderDetailByOrderId(Integer id) {
         List<OrderDetail> orderDetails = orderDetailRepository.getOrderDetailsByOrder_OrderId(id);
 
         return orderDetails.stream()

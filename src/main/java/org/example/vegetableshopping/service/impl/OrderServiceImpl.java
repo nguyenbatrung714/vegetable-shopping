@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 import org.example.vegetableshopping.converter.OrderConverter;
 import org.example.vegetableshopping.dto.request.OrderRequest;
 import org.example.vegetableshopping.dto.request.PlaceOrderRequest;
-import org.example.vegetableshopping.dto.request.ProductRequest;
 import org.example.vegetableshopping.dto.response.OrderResponse;
 import org.example.vegetableshopping.entity.Order;
 import org.example.vegetableshopping.entity.Product;
@@ -55,10 +54,10 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderResponse updateOrder(Integer id, OrderRequest orderRequest) {
-        userRepository.findById(orderRequest.getUserId())
-                .orElseThrow(
-                        () -> new ResourceNotFoundException("Order", "userId", "" + orderRequest.getUserId())
-                );
+//        userRepository.findById(orderRequest.getUserId())
+//                .orElseThrow(
+//                        () -> new ResourceNotFoundException("Order", "userId", "" + orderRequest.getUserId())
+//                );
 
         Order order = orderRepository.findById(id)
                 .orElseThrow(
@@ -102,7 +101,7 @@ public class OrderServiceImpl implements OrderService {
         OrderResponse orderResponse = saveOrder(placeOrderRequest.getOrderRequest());
 
         if (placeOrderRequest.getOrderDetailRequests().isEmpty()) {
-            throw new RuntimeException("Order null");
+            throw new IllegalArgumentException("Order null");
         }
         placeOrderRequest.getOrderDetailRequests().forEach(
                 item -> {

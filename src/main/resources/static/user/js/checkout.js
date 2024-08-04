@@ -17,7 +17,9 @@ $(document).on('click', '#order-checkout', function () {
 
     let paymentMethod = $('input[name="payment-method"]:checked').val();
     let paymentStatus = (paymentMethod === 'true') ? 'false' : 'true';
-    let userId = 1;
+
+    let user = JSON.parse(sessionStorage.getItem('account'));
+    let userId = user.userId;
 
     let orderRequest = {
         addressShipping: $('#address-shipping').val(),

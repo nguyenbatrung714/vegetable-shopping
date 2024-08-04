@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface OrderDetailService {
 
-    List<OrderDetailResponse> getOrderDetailByUserId(Integer userId);
+    List<OrderDetailResponse> getOrderDetailByOrderId(Integer userId);
 
     OrderDetailResponse saveOrderDetail(OrderDetailRequest request);
 

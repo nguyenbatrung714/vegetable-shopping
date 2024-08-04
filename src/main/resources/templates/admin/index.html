@@ -12,7 +12,7 @@
 
     <!-- css -->
     <link rel="stylesheet" th:href="@{/admin/css/index.css}">
-<!--    <link rel="stylesheet" th:href="@{/admin/css/cheditor-compoment.css}">-->
+    <!--    <link rel="stylesheet" th:href="@{/admin/css/cheditor-compoment.css}">-->
 
     <!--jquery-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
@@ -24,7 +24,7 @@
             integrity="sha512-JSCFHhKDilTRRXe9ak/FJ28dcpOJxzQaCd3Xg8MyF6XFjODhy/YMCM8HW0TFDckNHWUewW+kfvhin43hKtJxAw=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!--ckeditor-->
-<!--    <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/42.0.1/ckeditor5.css">-->
+    <!--    <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/42.0.1/ckeditor5.css">-->
 
 </head>
 <body>
@@ -33,89 +33,195 @@
 <div class="sidebar d-flex flex-column">
     <a href="#" class="navbar-brand">Admin | BaTrung</a>
     <ul class="nav flex-column">
-        <li class="nav-item">
-            <a class="nav-link active" href="#" onclick="showContent('dashboard')"><i class="fas fa-tachometer-alt"></i>
-                Dashboard</a>
-        </li>
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link active" href="#" onclick="showContent('dashboard')"><i class="fas fa-tachometer-alt"></i>-->
+<!--                Dashboard</a>-->
+<!--        </li>-->
         <li class="nav-item">
             <a class="nav-link" href="#" onclick="showContent('account')"><i class="fas fa-user"></i> Account</a>
         </li>
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link" href="#" onclick="showContent('basic-table')"><i class="fas fa-table"></i> Basic-->
+<!--                Table</a>-->
+<!--        </li>-->
         <li class="nav-item">
-            <a class="nav-link" href="#" onclick="showContent('basic-table')"><i class="fas fa-table"></i> Basic
-                Table</a>
+            <a class="nav-link" href="#" onclick="showContent('products')"><i class="fa-brands fa-product-hunt"></i>
+                Products</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#" onclick="showContent('products')"><i class="fa-brands fa-product-hunt"></i>Products</a>
+            <a class="nav-link" href="#" onclick="showContent('order')"><i class="fas fa-map-marker-alt"></i>
+                Order</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#" onclick="showContent('google-map')"><i class="fas fa-map-marker-alt"></i>
-                Google Map</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#" onclick="showContent('blog-editor')"><i class="fas fa-file-alt"></i>Blog</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#" onclick="showContent('error-404')"><i class="fas fa-exclamation-triangle"></i>
-                Error 404</a>
-        </li>
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link" href="#" onclick="showContent('blog-editor')"><i class="fas fa-file-alt"></i>Blog</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link" href="#" onclick="showContent('error-404')"><i class="fas fa-exclamation-triangle"></i>-->
+<!--                Error 404</a>-->
+<!--        </li>-->
     </ul>
 </div>
 
 <!-- Main content -->
 <div class="main-content">
-    <!--    <nav class="navbar navbar-expand-lg navbar-dark">-->
-    <!--        <div class="container-fluid">-->
-    <!--            <a class="navbar-brand" href="#">Dashboard</a>-->
-    <!--            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
-    <!--                <span class="navbar-toggler-icon"></span>-->
-    <!--            </button>-->
-    <!--            <div class="collapse navbar-collapse" id="navbarNav">-->
-    <!--                <ul class="navbar-nav ms-auto">-->
-    <!--                    <li class="nav-item">-->
-    <!--                        <a class="nav-link" href="#">Upgrade to Pro</a>-->
-    <!--                    </li>-->
-    <!--                    <li class="nav-item">-->
-    <!--                        <a class="nav-link" href="#">Steave</a>-->
-    <!--                    </li>-->
-    <!--                </ul>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </nav>-->
     <div class="container mt-4">
-        <div id="dashboard" class="content">
+<!--        <div id="dashboard" class="content">-->
 
-        </div>
+<!--        </div>-->
         <div id="account" class="content" style="display:none;">
+            <div class="modal fade" id="accountModal">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="account-model-header">Account Management</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-account">
+                                <div class="row mb-3">
+                                    <div class="form-group col-md-6">
+                                        <label for="user-id">User Id</label>
+                                        <input type="text" class="form-control" id="user-id"
+                                               placeholder="" disabled>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="full-name">Fullname</label>
+                                        <input type="text" class="form-control" id="full-name"
+                                               placeholder="" >
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="form-group col-md-4">
+                                        <label for="phone-number">Phone Number</label>
+                                        <input type="text" class="form-control" id="phone-number"
+                                               placeholder="" >
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="full-name">Email</label>
+                                        <input type="text" class="form-control" id="email"
+                                               placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="day-of-birth">Day Of Birth</label>
+                                        <input type="date" class="form-control" id="day-of-birth"
+                                               placeholder="" >
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="form-group col-md-4">
+                                        <label for="full-name">Password</label>
+                                        <input type="password" class="form-control" id="password"
+                                               placeholder="" >
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="user-id">Address</label>
+                                        <input type="text" class="form-control" id="user-address"
+                                               placeholder="" required>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="user-id">username</label>
+                                        <input type="text" class="form-control" id="user-username"
+                                               placeholder="" required>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="form-group col-md-4">
+                                        <label>Gender</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="gender"
+                                                   id="gender-male" value="male" checked>
+                                            <label class="form-check-label" for="gender-male">
+                                                Male
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="gender"
+                                                   id="gender-female" value="female">
+                                            <label class="form-check-label" for="gender-female">
+                                                Female
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label>Active</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="active"
+                                                   id="active-yes" value="true" checked>
+                                            <label class="form-check-label" for="active-yes">
+                                                Active
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="active"
+                                                   id="active-no" value="false">
+                                            <label class="form-check-label" for="active-no">
+                                                InActive
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label>Active</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="role"
+                                                   id="admin-yes" value="ROLE_ADMIN" checked>
+                                            <label class="form-check-label" for="active-yes">
+                                                Admin
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="role"
+                                                   id="admin-no" value="ROLE_USER">
+                                            <label class="form-check-label" for="active-no">
+                                                User
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="save-account" type="button" class="btn btn-success">create</button>
+                            <button id="update-account" type="button" class="btn btn-warning">Update</button>
+                            <button id="reset-account" type="button" class="btn btn-primary">Reset</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div>
-                <button>
-                    xin chao
+                <button id="create-account" type="button" class="btn btn-success mb-2" data-bs-toggle="modal"
+                        data-bs-target="#accountModal">
+                    <i class="fa-solid fa-plus"></i> Create Account
                 </button>
             </div>
             <div>
                 <table class="table bg-white">
                     <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th>User ID</th>
+                        <th>UserName</th>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Gender</th>
+                        <th>Active</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    dy>
+                    <tbody id="account-table">
+                    <!--data-->
+                    </tbody>
                 </table>
             </div>
         </div>
-        <div id="basic-table" class="content" style="display:none;">
-            <h1>Basic Table</h1>
+<!--        <div id="basic-table" class="content" style="display:none;">-->
+<!--            <h1>Basic Table</h1>-->
 
-        </div>
+<!--        </div>-->
         <div id="products" class="content" style="display:none;">
             <div class="modal fade" id="productModal">
                 <div class="modal-dialog modal-xl">
@@ -214,38 +320,126 @@
                     </tr>
                     </thead>
                     <tbody id="products-table">
-<!--                    data-->
+                    <!--                    data-->
                     </tbody>
                 </table>
             </div>
-            <div class="product__pagination float-right">
+            <div class="product__pagination float-right bg-white">
                 <a class="first-page">First</a>
                 <a class="next-page">Next</a>
                 <a class="prev-page">Prev</a>
                 <a class="last-page">Last</a>
             </div>
         </div>
-        <div id="google-map" class="content" style="display:none;">
-            <h1>Google Map</h1>
-            <div class="card">
-                <div class="card-body">
-                    Google Map Content
+        <div id="order" class="content" style="display:none;">
+            <div class="modal fade" id="orderModal">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="order-model-header">Order management</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-product">
+                                <div class="row mb-3">
+                                    <div class="form-group col-md-6">
+                                        <label for="order-id">Order ID</label>
+                                        <input type="text" name="orderID" class="form-control" id="order-id"
+                                               placeholder="Order ID" disabled>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="order-status">Order Status</label>
+                                        <select id="order-status" name="orderStatus" class="form-control">
+                                            <option value="">Select Product Status</option>
+                                            <option value="WAIT_FOR_CONFIRMATION">WAIT_FOR_CONFIRMATION</option>
+                                            <option value="ON_DELIVERY">ON_DELIVERY</option>
+                                            <option value="DELIVERED">DELIVERED</option>
+                                            <option value="RETURNS">RETURNS</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="form-group col-md-4">
+                                        <label for="order-date">Order Date</label>
+                                        <input type="text" name="orderID" class="form-control" id="order-date"
+                                               placeholder="Order Date" disabled>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="shipping-fee">Shipping Fee</label>
+                                        <input type="text" name="orderID" class="form-control" id="shipping-fee"
+                                               placeholder="Order Date" disabled>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="order-total">Total</label>
+                                        <input type="text" name="orderID" class="form-control" id="order-total"
+                                               placeholder="Order Total" disabled>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="form-group col-md-12">
+                                        <label for="address-shipping">Address Shipping</label>
+                                        <input type="text" name="orderID" class="form-control"
+                                               id="address-shipping"
+                                               placeholder="Address shipping" disabled>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-12">
+                                            <textarea id="order-note" class="form-control" rows="4"
+                                                      disabled></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="row text-red mt-3">
+                                <h4 class="text-center">Order Details</h4>
+                            </div>
+                            <div id="show-order-details" class="mt-3">
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="order-update" type="button" class="btn btn-warning">Update</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                            </button>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <div>
+                <table class="table bg-white">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Date</th>
+                        <th>Payment Method</th>
+                        <th>Payment Status</th>
+                        <th>Order Status</th>
+                        <th>Address Shipping</th>
+                        <th>Shipping Fee</th>
+                        <th>Total Amount</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody id="order-table">
+                    <!--                    data-->
+                    </tbody>
+                </table>
             </div>
         </div>
         <div id="blog-editor" class="content" style="display:none;">
             <div class="bg-white">
                 <form class="form-product">
 
-<!--                    <div class="main-container">-->
-<!--                        <div class="editor-container editor-container_document-editor" id="editor-container">-->
-<!--                            <div class="editor-container__menu-bar" id="editor-menu-bar"></div>-->
-<!--                            <div class="editor-container__toolbar" id="editor-toolbar"></div>-->
-<!--                            <div class="editor-container__editor-wrapper">-->
-<!--                                <div class="editor-container__editor"><div id="editor"></div></div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
+                    <!--                    <div class="main-container">-->
+                    <!--                        <div class="editor-container editor-container_document-editor" id="editor-container">-->
+                    <!--                            <div class="editor-container__menu-bar" id="editor-menu-bar"></div>-->
+                    <!--                            <div class="editor-container__toolbar" id="editor-toolbar"></div>-->
+                    <!--                            <div class="editor-container__editor-wrapper">-->
+                    <!--                                <div class="editor-container__editor"><div id="editor"></div></div>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
 
                     <textarea id="blog-content"></textarea>
 
@@ -254,14 +448,14 @@
                 </form>
             </div>
         </div>
-        <div id="error-404" class="content" style="display:none;">
-            <h1>Error 404</h1>
-            <div class="card">
-                <div class="card-body">
-                    Error 404 Content
-                </div>
-            </div>
-        </div>
+<!--        <div id="error-404" class="content" style="display:none;">-->
+<!--            <h1>Error 404</h1>-->
+<!--            <div class="card">-->
+<!--                <div class="card-body">-->
+<!--                    Error 404 Content-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
     </div>
 </div>
 
@@ -278,6 +472,8 @@
 <script th:src="@{/admin/js/event-slidebar.js}"></script>
 <script th:src="@{/admin/js/product.js}"></script>
 <script th:src="@{/admin/js/blog.js}"></script>
+<script th:src="@{/admin/js/order.js}"></script>
+<script th:src="@{/admin/js/account.js}"></script>
 <script th:src="@{/admin/js/pagination.js}"></script>
 
 <script th:src="@{//cdn.ckeditor.com/4.22.1/full/ckeditor.js}"></script>
