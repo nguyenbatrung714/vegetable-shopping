@@ -129,7 +129,70 @@ $(document).on('click', '#button-search-by-name', function () {
         });
 })
 
+function loadCategoriesFeature(page, size) {
+    axios.get(`http://localhost:8080/api/v1/categories?page=${page}&size=${size}`)
+        .then(function (response) {
+
+            let categories = response.data.content;
+
+            $('#category-feature').empty();
+            $('#category-feature').append(`<li class="category-feature-all">All</li>`)
+
+            categories.forEach(category => {
+                $('#category-feature').append(`
+                    <li class="category-feature-one" data-category-id="${category.categoryId}">${category.categoryName}</li>
+                `)
+            })
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
+
+// load product by category
+$(document).on('click', '.category-feature-one', function () {
+    let categoryId = $(this).data('category-id');
+    axios.get(`http://localhost:8080/api/v1/products/category/${categoryId}?size=8`)
+        .then(function (response) {
+            let products = response.data.content;
+            $('.featured__filter').empty();
+            products.forEach(
+                product => {
+                    $('.featured__filter').append(`
+                        <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood vegetables">
+                            <div class="featured__item">
+                                <div class="featured__item__pic set-bg" style="background-image: url(${product.imagePath})">
+                                    <ul class="featured__item__pic__hover">
+                                        <li><a><i class="fa fa-retweet"></i></a></li>
+                                        <li><a class="add-to-cart" data-product='${JSON.stringify(product)}'>
+                                        <i class="fa fa-shopping-cart"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="featured__item__text">
+                                    <h6><a href="/vegetable-shopping/products/product-detail/${product.productId}">${product.productName}</a></h6>
+                                    <h5>$ ${product.price}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    `);
+                }
+            );
+
+            // pagination
+            let totalPages = response.data.totalPages;
+            setupPagination(totalPages, size, loadFeatureProduct);
+        })
+        .then(function (error) {
+            console.log(error.message);
+        })
+})
+
+$(document).on('click', '.category-feature-all', function () {
+    loadFeatureProduct(0, 8);
+});
+
 $(window).on('load', function () {
+    loadCategoriesFeature(0, 4);
     loadSectionCategories();
     loadFeatureProduct(0, 8);
     loadThreeBlogs(0, 3);

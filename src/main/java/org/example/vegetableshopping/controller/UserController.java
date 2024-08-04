@@ -54,4 +54,9 @@ public class UserController {
         return "user/checkout";
     }
 
+    @GetMapping("/change-password")
+    public String getChangePassword() {
+        return "user/change-password";
+    }
+
 }
