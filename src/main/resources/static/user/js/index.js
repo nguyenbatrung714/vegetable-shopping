@@ -18,10 +18,12 @@ function loadSectionCategories() {
         })
 }
 
+let currentPage = 0;
 function loadFeatureProduct(page, size) {
     axios.get(`http://localhost:8080/api/v1/products?page=${page}&size=${size}`)
         .then(function (response) {
             let products = response.data.content;
+            $('.featured__filter').empty();
             products.forEach(
                 product => {
                     $('.featured__filter').append(`
@@ -43,11 +45,17 @@ function loadFeatureProduct(page, size) {
                     `);
                 }
             );
+
+            // pagination
+            let totalPages = response.data.totalPages;
+            setupPagination(totalPages, size, loadFeatureProduct);
+
         })
         .catch(function (error) {
             console.log(error);
         });
 }
+
 
 function loadThreeBlogs(page, size) {
     axios.get(`http://localhost:8080/api/v1/blogs?page=${page}&size=${size}`)

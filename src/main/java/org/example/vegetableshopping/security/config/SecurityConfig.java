@@ -33,13 +33,17 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeHttpRequests(registry ->
-                        registry
+                .authorizeHttpRequests(registry -> registry
 //                                .requestMatchers("/api/v1/auth/**").permitAll()
 //                                .requestMatchers("/api/v1/products/**").permitAll()
 //                                .anyRequest().authenticated()
+//                                .requestMatchers("/api/v1/orders/{id}/orders").authenticated()
                                 .anyRequest().permitAll()
                 )
+                .oauth2Login(oauth2 -> oauth2
+                        .loginPage("/vegetable-shopping/login")
+                        .defaultSuccessUrl("/api/v1/auth/login-google-success", true)
+                        .failureUrl("/vegetable-shopping/login?error=true"))
                 .exceptionHandling(exception ->
                         exception.authenticationEntryPoint(authEntryPoint)
                 )
@@ -52,7 +56,7 @@ public class SecurityConfig {
         http.cors(AbstractHttpConfigurer::disable);
 
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-        
+
         return http.build();
     }
 

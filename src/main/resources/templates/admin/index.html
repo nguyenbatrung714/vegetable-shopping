@@ -117,8 +117,86 @@
 
         </div>
         <div id="products" class="content" style="display:none;">
+            <div class="modal fade" id="productModal">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="product-model-header">Product management</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="product-form" class="form-product">
+                                <div class="row mb-3">
+                                    <!-- Loại Hàng -->
+                                    <div class="form-group col-md-6">
+                                        <label for="product-category-id">Category type</label>
+                                        <select id="product-category-id" class="form-control">
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="product-id">Id</label>
+                                        <input type="text" class="form-control" id="product-id"
+                                               placeholder="" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="form-group col-md-6">
+                                        <label for="product-name">Name</label>
+                                        <input type="text" class="form-control" id="product-name"
+                                               placeholder="Enter name product">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="product-quantity">Quantity</label>
+                                        <input type="number" class="form-control" id="product-quantity"
+                                               placeholder="Enter the quantity"
+                                               min="1" step="1">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="form-group col-md-6">
+                                        <label for="product-price">Price</label>
+                                        <input type="number" class="form-control" id="product-price"
+                                               placeholder="Enter the price"
+                                               min="1" step="10">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="product-weight">Weight</label>
+                                        <input type="number" class="form-control" id="product-weight"
+                                               placeholder="Enter the weight"
+                                               step="0.01" min="0">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="form-group col-md-12">
+                                        <label>Product Image</label> <br>
+                                        <label for="product-image">Image</label>
+                                        <input type="file" name="product-image" class="form-control"
+                                               id="product-image">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="product-description">Description</label>
+                                    <textarea class="form-control" id="product-description" rows="5"
+                                              placeholder="Enter the description"></textarea>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="add-product" type="button" class="btn btn-primary">Add</button>
+                            <button id="update-product" type="button" class="btn btn-secondary">Update</button>
+                            <button id="delete-product" type="button" class="btn btn-danger">Delete</button>
+                            <button id="reset-product" type="button" class="btn btn-secondary">Reset</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div>
-                <button class="btn btn-primary">
+                <button class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#productModal">
                     Add Product
                 </button>
             </div>
@@ -132,23 +210,19 @@
                         <th>Quantity</th>
                         <th>Price</th>
                         <th>Weight</th>
-                        <th>Type</th>
                         <th>Action</th>
                     </tr>
                     </thead>
                     <tbody id="products-table">
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
+<!--                    data-->
                     </tbody>
                 </table>
+            </div>
+            <div class="product__pagination float-right">
+                <a class="first-page">First</a>
+                <a class="next-page">Next</a>
+                <a class="prev-page">Prev</a>
+                <a class="last-page">Last</a>
             </div>
         </div>
         <div id="google-map" class="content" style="display:none;">
@@ -204,6 +278,7 @@
 <script th:src="@{/admin/js/event-slidebar.js}"></script>
 <script th:src="@{/admin/js/product.js}"></script>
 <script th:src="@{/admin/js/blog.js}"></script>
+<script th:src="@{/admin/js/pagination.js}"></script>
 
 <script th:src="@{//cdn.ckeditor.com/4.22.1/full/ckeditor.js}"></script>
 

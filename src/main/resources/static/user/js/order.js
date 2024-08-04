@@ -1,5 +1,7 @@
 function loadOrderByUserId(page, size) {
-    let userId = 1;
+    let user = JSON.parse(sessionStorage.getItem('account'));
+
+    let userId = user.userId;
     axios.get(`http://localhost:8080/api/v1/orders/${userId}/orders?page=${page}&size=${size}`)
         .then(function (response) {
             let orders = response.data.content;

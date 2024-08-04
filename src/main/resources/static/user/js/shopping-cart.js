@@ -18,13 +18,15 @@ function displayCart() {
                 </td>
                 <td class="shoping__cart__quantity">
                     <div class="quantity">
-                        <div class="pro-qty">
-                            <input type="text" value="${item.quantityCart}">
-                        </div>
+                            <div class="pro-qty">
+                               <i class="fa-solid fa-minus" data-product-id="${item.productId}"></i>
+                                <input type="text" value="${item.quantityCart}" readonly>
+                                <i class="fa-solid fa-plus" data-product-id="${item.productId}"></i>
+                            </div>
                     </div>
                 </td>
                 <td class="shoping__cart__total">
-                    ${item.price * item.quantityCart}
+                    ${(item.price * item.quantityCart).toFixed(2)}
                 </td>
                 <td class="shoping__cart__item__close">
                     <span class="icon_close" data-product-id="${item.productId}"></span>
@@ -33,6 +35,36 @@ function displayCart() {
         `)
     })
 }
+
+// Tăng số lượng sản phẩm
+$(document).on('click', '.fa-plus', function () {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let productId = $(this).data('product-id');
+    cart = cart.map(item => {
+        if (item.productId === productId) {
+            item.quantityCart += 1;
+        }
+        return item;
+    });
+    localStorage.setItem('cart', JSON.stringify(cart));
+    totalCart();
+    displayCart();
+});
+
+// Giảm số lượng sản phẩm
+$(document).on('click', '.fa-minus', function () {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let productId = $(this).data('product-id');
+    cart = cart.map(item => {
+        if (item.productId === productId && item.quantityCart > 1) {
+            item.quantityCart -= 1;
+        }
+        return item;
+    });
+    localStorage.setItem('cart', JSON.stringify(cart));
+    totalCart();
+    displayCart();
+});
 
 // clear cart
 $(document).on('click', '#clear-cart', function () {

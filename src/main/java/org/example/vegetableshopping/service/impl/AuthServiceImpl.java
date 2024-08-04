@@ -14,7 +14,6 @@ import org.example.vegetableshopping.exception.ResourceExitsException;
 import org.example.vegetableshopping.exception.ResourceNotFoundException;
 import org.example.vegetableshopping.repository.RoleRepository;
 import org.example.vegetableshopping.repository.UserRepository;
-import org.example.vegetableshopping.security.config.SecurityConfig;
 import org.example.vegetableshopping.security.jwt.JwtTokenProvider;
 import org.example.vegetableshopping.service.AuthService;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -79,7 +78,7 @@ public class AuthServiceImpl implements AuthService {
                             .orElseThrow(() -> new RuntimeException("Role " + roleName + " is not found."));
                     roles.add(role);
                 } catch (IllegalArgumentException e) {
-                    throw new RuntimeException("Invalid role name " + roleName);
+                    throw new IllegalArgumentException("Invalid role name " + roleName);
                 }
             }
         }
@@ -105,7 +104,7 @@ public class AuthServiceImpl implements AuthService {
                             .orElseThrow(() -> new RuntimeException("Role " + roleName + " is not found."));
                     roles.add(role);
                 } catch (IllegalArgumentException e) {
-                    throw new RuntimeException("Invalid role name " + roleName);
+                    throw new IllegalArgumentException("Invalid role name " + roleName);
                 }
             }
             user.setRoles(roles);

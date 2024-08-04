@@ -53,7 +53,7 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public void deleteBlog(Integer id) {
-
+        // Chua xwr li
     }
 
     @Override
